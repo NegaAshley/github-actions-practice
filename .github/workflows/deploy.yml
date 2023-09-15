@@ -17,7 +17,9 @@ jobs:
           yarn run
           eslint --ext .jsx --fix src
       - name: Run tests
-        run: vitest run
+        run:
+        npm install -g vitest
+        vitest run
       - name: Get code
         uses: actions/checkout@v4
       - name: InstallNodeJS
