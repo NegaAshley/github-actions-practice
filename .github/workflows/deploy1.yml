@@ -7,18 +7,13 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4
       - name: Install dependencies
-        needs: Get code
         run: npm ci
       - name: Lint
-        needs: Install dependencies
         run:
           npm run lint
       - name: Run tests
-        needs: Lint
         run: npm run test
       - name: Build project
-        needs: Run tests
         run: npm run build
       - name: Deploy
-        needs: Run tests
         run: echo "Deploying ..." #just for showing what process may look like
