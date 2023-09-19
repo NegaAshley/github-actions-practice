@@ -1,0 +1,25 @@
+name: Deploy Exercise 2
+on: [push, workflow_dispatch]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run:
+          npm run lint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run tests
+        run: npm run test
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build project
+        run: npm run build
+      - name: Deploy
+        run: echo "Deploying ..." #just for showing what process may look like
